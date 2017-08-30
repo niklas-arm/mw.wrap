@@ -428,7 +428,7 @@ std::string generator::make_fn (const outline::entry & e)
                 >> '(' >> (type_name[push_back(params)] % (',' >> +x3::space)) >> x3::lit(')')
                 >> ',' >> +x3::space >> '&' >> class_name[assign(member_name)] >> '>'
                 >> x3::lit("::connect_impl(void*, ") >> class_name[compare(return_type)]
-                >> +x3::space >> '(' >> class_name[compare(class_type)] > '*'  >> x3::lit(')')
+                >> +x3::space >> '(' >> class_name[compare(class_type)] >> '*'  >> x3::lit(')')
                 >> '(' >> (type_name[cmp_elems(params)] % (',' >> +x3::space)) >> x3::lit(')')
                 >> ')' >> *x3::space >> x3::eoi
             ;
@@ -625,7 +625,7 @@ std::string generator::make_mem (const outline::entry & e)
                 >> x3::lit(')')
                 >> ',' >> +x3::space >> '&' >> class_name[assign(member_name)] >> '>'
                 >> x3::lit("::connect_impl(void*, ") >> class_name[compare(return_type)]
-                >> +x3::space >> '(' >> class_name[compare(class_type)] > '*'  >> x3::lit(')')
+                >> +x3::space >> '(' >> class_name[compare(class_type)] >> '*'  >> x3::lit(')')
                 >> '('
                     >> class_name[compare(class_name_)]  >> -x3::lit(" const") >> -x3::lit(" volatile") >> "*"
                     >> *(x3::omit[',' >> +x3::space] >> type_name[cmp_elems(params)])
@@ -833,7 +833,7 @@ std::string generator::make_static_mem (const outline::entry & e)
                 >> x3::lit(')')
                 >> ',' >> +x3::space >> '&' >> class_name[assign(member_name)] >> '>'
                 >> x3::lit("::connect_impl(void*, ") >> class_name[compare(return_type)]
-                >> +x3::space >> '(' >> class_name[compare(class_type)] > '*'  >> x3::lit(')')
+                >> +x3::space >> '(' >> class_name[compare(class_type)] >> '*'  >> x3::lit(')')
                 >> '('
                     >> class_name[compare(class_name_)]  >> -x3::lit(" const") >> -x3::lit(" volatile") >> "*"
                     >> *(x3::omit[',' >> +x3::space] >> type_name[cmp_elems(params)])
